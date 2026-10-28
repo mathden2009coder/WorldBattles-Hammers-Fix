@@ -1,0 +1,5 @@
+# WorldBattles Hammers 0.4.8 — experimental eligibility-filter patch
+
+Based on the user's 0.4.7 test JAR. In `WorldBattlesHammers.tick`, the result of `ServerPlayer.canHarvestBlock(BlockState)` is now discarded instead of skipping the neighbor when it returns false. This targets blocks skipped by the player-level harvestability gate while preserving the existing non-air, no-block-entity, non-negative-hardness checks, the tool-aware `destroyWithTool` routine, and the existing 3x3 queue/plane selection.
+
+The class-file bytecode length is unchanged and the existing branch offsets and stack-map frames are left in place; the result is popped before falling through. ZIP integrity and bytecode disassembly were checked. This has not been tested in a running Forge 1.20.1 client/server. Since the harvestability gate is bypassed, test on a backup world and verify protection integrations, drops, and tool durability before using it on the live server.
