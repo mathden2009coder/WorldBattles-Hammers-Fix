@@ -1,0 +1,3 @@
+# WorldBattles Hammers 0.4.4 — verifier fix
+
+Fixed the `VerifyError: Operand stack underflow` in `destroyWithTool` by preserving the `ServerLevel` as the `LevelReader` argument to `BlockState.getExpDrop` while separately loading its random source. This is a one-instruction bytecode correction to the 0.4.3 test build. ZIP integrity was checked and the resulting method disassembly inspected. It still requires an in-game Forge 1.20.1 test for Fortune, XP, durability, protections, and the 3x3 block targeting behavior.
